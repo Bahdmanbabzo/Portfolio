@@ -1,9 +1,10 @@
 import Loader from "./components/Loader"
-
+import World from "./components/World"
 function App() {
   return (
    <div className="bg-teal-200">
-    <Loader />
+    {/* <Loader /> */}
+    <World />
    </div>
   )
 }
