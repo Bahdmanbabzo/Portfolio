@@ -1,36 +1,23 @@
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, MeshDistortMaterial, SpotLight } from '@react-three/drei';
+import { OrbitControls, MeshDistortMaterial, SpotLight, Sphere } from '@react-three/drei';
 
 const World = () => {
     return (
         <div className="h-screen w-screen bg-white">
-            <Canvas>
-                {/* <ambientLight intensity={1} color="white" /> */}
+            <Canvas camera={{ position: [0, 0, 4] }}>
+                <ambientLight intensity={1} color="yellow" />
                 <pointLight
                     position={[0, 2, 1]}
                     color="red"
                     intensity={10}
                     distance={5}
                 />
-                 <pointLight
-                    position={[0, 2, 1]}
-                    color="red"
-                    intensity={10}
-                    distance={5}
-                />
-                 <pointLight
-                    position={[4, 2, 1]}
-                    color="red"
-                    intensity={10}
-                    distance={5}
-                />
-
                 <mesh>
-                    <sphereGeometry />
+                    <sphereGeometry/>
                     <MeshDistortMaterial 
-                        distort={0.4} 
+                        distort={0.3} 
                         speed={3}  
-                        color="white"
+                        color="hotpink"
                         metalness={0} // Set metalness to 1 for high reflectivity
                         roughness={1} // Set roughness to 0 for a smooth surface
                     />
