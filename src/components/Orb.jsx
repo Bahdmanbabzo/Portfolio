@@ -1,21 +1,25 @@
+import { useState } from 'react'
+import { useSpring, animated } from '@react-spring/web'
+import { MeshDistortMaterial } from '@react-three/drei'
 
-import { MeshDistortMaterial } from '@react-three/drei';
+const AnimatedMeshDistortMaterial = animated(MeshDistortMaterial)
 
-const Orb = () => {
-    return (
-        <>
-            <ambientLight intensity={0.5} />
-            <directionalLight position={[0, 10, 5]} intensity={1} />
-            <mesh>
-                <sphereGeometry args={[1, 32, 32]} />
-                <MeshDistortMaterial 
-                        distort={0.5} 
-                        speed={3}
-                        color='#DF7FFA'
-                />
-            </mesh>
-        </>
-    );
-};
+export default function Orb() {
+  const [clicked, setClicked] = useState(false)
 
-export default Orb;
+  const springs = useSpring({
+    color: clicked ? '#569AFF' : '#ff6d6d',
+  })
+
+  const handleClick = () => setClicked(s => !s)
+
+  return (
+    <mesh onClick={handleClick}>
+      <sphereGeometry args={[1.5, 64, 32]} />
+      <AnimatedMeshDistortMaterial
+        speed={2}
+        distort={0.2}
+        color={springs.color} />
+    </mesh>
+  )
+}
