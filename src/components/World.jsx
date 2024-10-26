@@ -5,8 +5,8 @@ import Orb from './Orb';
 const World = () => {
     return (
         <div className="h-screen w-screen bg-white">
-            <Canvas shadows camera={{ position: [0, 0, 3] }}>
-                <ambientLight intensity={0.5} />
+            <Canvas shadows camera={{ position: [0, 0, 1] }}>
+                <ambientLight intensity={100} color="yellow" />
                 <Orb />
                 <OrbitControls />
             </Canvas>
