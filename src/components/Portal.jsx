@@ -4,7 +4,7 @@ import { MeshDistortMaterial, Stage, MeshPortalMaterial  } from '@react-three/dr
 
 const AnimatedMeshDistortMaterial = animated(MeshDistortMaterial)
 
-export default function Orb() {
+export default function Portal() {
   const [clicked, setClicked] = useState(false)
   const ref = useRef(); 
 
