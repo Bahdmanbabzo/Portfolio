@@ -1,6 +1,8 @@
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls} from '@react-three/drei';
+import { OrbitControls, Html} from '@react-three/drei';
+import { Suspense } from 'react';
 import Portal from './Portal';
+import OrbsScene from './OrbsScene';
 
 const World = () => {
     return (
@@ -19,7 +21,10 @@ const World = () => {
             >
                 <color attach="background" args={['#050505']} />
                 <fog attach="fog" args={['#050505', 8, 40]} />
-                <Portal />
+               
+                <Suspense fallback={<Html center>Loading.</Html>}>
+                    <OrbsScene />
+                </Suspense>
                 <OrbitControls />
             </Canvas>
         </div>
