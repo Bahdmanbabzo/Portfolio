@@ -4,6 +4,7 @@ import {
     useCubeTexture, 
     MeshDistortMaterial, 
 } from '@react-three/drei';
+import * as THREE from 'three'; 
 import { useFrame } from '@react-three/fiber';
 import { useRef } from 'react'; 
 
@@ -16,6 +17,11 @@ export default function MainOrb({material}){
             mouse.x * Math.PI, 
             0.1
         ); 
+        ref.current.rotation.x = THREE.MathUtils.lerp(
+            ref.current.rotation.x, 
+            mouse.y * Math.PI,
+            0.1
+        )
 
     })
     return (
