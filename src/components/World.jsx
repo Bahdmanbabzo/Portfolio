@@ -1,6 +1,6 @@
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls} from '@react-three/drei';
-import Orb from './Orb';
+import Portal from './Portal';
 
 const World = () => {
     return (
@@ -19,7 +19,7 @@ const World = () => {
             >
                 <color attach="background" args={['#050505']} />
                 <fog attach="fog" args={['#050505', 8, 40]} />
-                <Orb />
+                <Portal />
                 <OrbitControls />
             </Canvas>
         </div>
