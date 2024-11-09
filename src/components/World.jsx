@@ -6,7 +6,7 @@ import OrbsScene from './OrbsScene';
 
 const World = () => {
     return (
-        <div className="h-screen w-screen">
+        <div className="h-screen w-screen absolute top-0">
             <Canvas 
             shadows 
             camera={{ position: [0, 0, 1] }}
@@ -25,7 +25,7 @@ const World = () => {
                 <Suspense fallback={<Html center>Loading.</Html>}>
                     <OrbsScene />
                 </Suspense>
-                <OrbitControls />
+                {/* <OrbitControls /> */}
             </Canvas>
         </div>
     );
