@@ -6,7 +6,8 @@ export default function Page() {
     const ref = useRef();
 
     // Calculate the opacity based on the scroll position
-    const opacity = useTransform(scrollY, [0, 150], [1, 0]);
+    // If ref is not mounted, use a default height of 150
+    const opacity = useTransform(scrollY, [0, ref.current?.offsetHeight / 2 || 150], [1, 0]);
 
     return (
         <div className="text-red-500 absolute z-40 h-screen w-screen pt-14 px-6">
