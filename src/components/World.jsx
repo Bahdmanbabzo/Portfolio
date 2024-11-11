@@ -9,7 +9,7 @@ const World = () => {
         <div className="h-screen w-screen absolute top-0">
             <Canvas 
             shadows 
-            camera={{ position: [0, 0, 1] }}
+            camera={{ position: [0, 0, 3] }}
             colorManagement
             gl={{
                 powerPreference:"high-performance",
@@ -25,7 +25,7 @@ const World = () => {
                 <Suspense fallback={<Html center>Loading.</Html>}>
                     <OrbsScene />
                 </Suspense>
-                {/* <OrbitControls /> */}
+                <OrbitControls />
             </Canvas>
         </div>
     );
