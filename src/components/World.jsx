@@ -6,7 +6,7 @@ import OrbsScene from './OrbsScene';
 
 const World = () => {
     return (
-        <div className="h-screen w-screen absolute top-0">
+        <div className="h-screen w-screen fixed top-0">
             <Canvas 
             shadows 
             camera={{ position: [0, 0, 3] }}
