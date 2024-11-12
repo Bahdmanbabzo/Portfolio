@@ -7,6 +7,7 @@ import {
 import * as THREE from 'three'; 
 import { useFrame } from '@react-three/fiber';
 import { useRef } from 'react'; 
+import { motion } from 'framer-motion'
 
 export default function MainOrb({material}){
     const ref= useRef(); 
@@ -25,11 +26,13 @@ export default function MainOrb({material}){
 
     })
     return (
-        <Sphere 
-            args={[1,64,64]}
+        <motion.mesh 
+            whileHover={{scale: 0.5}}
             ref={ref}
             material={material}
-            position={[0,0,0]}
-        />
+            position={[0, 0, 0]}
+        >
+            <sphereGeometry args={[1, 64, 64]} />
+        </motion.mesh>
     )
 }
