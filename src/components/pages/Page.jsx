@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import HorizontalScroll from "./HorizontalScroll";
 
 export default function Page() {
     const { scrollY } = useScroll();
@@ -10,22 +11,18 @@ export default function Page() {
     const opacity = useTransform(scrollY, [0, ref.current?.offsetHeight / 2 || 150], [1, 0]);
 
     return (
-        <div className="text-red-500 absolute z-40 h-screen w-screen pt-14 px-6">
-            <motion.section
-                className="text-[#fca311] text-3xl font-semibold relative h-full w-full"
-                ref={ref}
-                style={{ opacity: opacity }}
-            >
-                <p className="absolute text-5xl font-semibold top-0 left-0">CRAFTED IN THE </p>
-                <p className="absolute text-5xl font-semibold top-1/3 left-1/3"> TRADITION</p>
-                <p className="absolute text-5xl font-semibold top-2/3 left-2/3"> OF EXCELLENCE</p>
-            </motion.section>
-            <motion.section 
-                className="text-[#fca311] text-3xl font-semibold relative h-screen w-screen flex flex-none items-center"
-              
-            >
-               <img src="/Lapland,-Finland.jpg" alt="" className="h-1/2 w-1/3 rounded-lg m-6" /><img src="Las-Medulas,-Spain.jpg" alt="" className="h-1/2 w-1/3 rounded-lg m-6" /><img src="Lofoten-Islands- Norway.jpg" alt="" className="h-1/2 w-1/3 rounded-lg m-6" /><img src="Swiss Alps- Switzerland.jpg" alt="" className="h-1/2 w-1/3 rounded-lg m-6" /><img src="Vatnajokull-Iceland.jpg" alt="" className="h-1/2 w-1/3 rounded-lg m-6" />
-            </motion.section>
+        <div className="text-red-500 relative z-40 pt-14 px-6">
+            <div className="flex h-48 items-center justify-center">
+        <span className="font-semibold uppercase text-neutral-500">
+          Scroll down
+        </span>
+      </div>
+      <HorizontalScroll />
+      <div className="flex h-48 items-center justify-center">
+        <span className="font-semibold uppercase text-neutral-500 border-red-500 border-4 h-screen w-screen">
+          Scroll up
+        </span>
+      </div>
         </div>
     );
 }
