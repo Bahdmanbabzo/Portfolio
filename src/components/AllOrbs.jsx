@@ -1,6 +1,7 @@
 import MainOrb from "./MainOrb";
 import { useFrame } from "@react-three/fiber";
 import { Icosahedron } from "@react-three/drei";
+
 import { useState } from "react"
 
 export default function AllOrbs({ material }){
