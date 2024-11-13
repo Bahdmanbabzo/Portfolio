@@ -35,7 +35,7 @@ export default function HorizontalScroll () {
       target: targetRef,
     });
   
-    const x = useTransform(scrollYProgress, [0, 1], ["1%", "-95%"]);
+    const x = useTransform(scrollYProgress, [0, 1], ["1%", "-100%"]);
   
     return (
       <section ref={targetRef} className="relative h-[300vh] bg-transparent border-4 border-green-600">
