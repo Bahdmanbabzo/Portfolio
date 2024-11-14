@@ -15,12 +15,12 @@ export default function HorizontalScroll () {
           id: 2,
         },
         {
-          url: "/Lofoten-Islands- Norway.jpg",
+          url: "/Lofoten-islands-Norway.jpg",
           title: "Title 3",
           id: 3,
         },
         {
-          url: "/Swiss Alps- Switzerland.jpg",
+          url: "/Swiss-Alps-Switzerland.jpg",
           title: "Title 4",
           id: 4,
         },
@@ -38,7 +38,7 @@ export default function HorizontalScroll () {
     const x = useTransform(scrollYProgress, [0, 1], ["1%", "-100%"]);
   
     return (
-      <section ref={targetRef} className="relative h-[300vh] bg-transparent border-4 border-green-600">
+      <section ref={targetRef} className="relative h-[300vh] bg-transparent">
         <div className="sticky top-0 flex h-screen items-center overflow-hidden">
           <motion.div style={{ x }} className="flex gap-4">
             {cards.map((card) => {

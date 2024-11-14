@@ -19,7 +19,7 @@ export default function Page() {
       </div>
       <HorizontalScroll />
       <div className="flex h-48 items-center justify-center">
-        <span className="font-semibold uppercase text-neutral-500 border-red-500 border-4 h-screen w-screen">
+        <span className="font-semibold uppercase text-neutral-500 h-screen w-screen">
           Scroll up
         </span>
       </div>
