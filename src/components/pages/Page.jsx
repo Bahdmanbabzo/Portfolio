@@ -12,17 +12,15 @@ export default function Page() {
 
     return (
         <div className="text-red-500 relative z-40 pt-14 px-6">
-            <div className="flex h-48 items-center justify-center">
-        <span className="font-semibold uppercase text-neutral-500">
-          Scroll down
-        </span>
-      </div>
-      <HorizontalScroll />
-      <div className="flex h-48 items-center justify-center">
-        <span className="font-semibold uppercase text-neutral-500 h-screen w-screen">
-          Scroll up
-        </span>
-      </div>
-        </div>
+          <div className="flex h-48 items-center justify-center">
+            
+          </div>
+          <HorizontalScroll />
+          <div className="flex h-48 items-center justify-center">
+            <span className="font-semibold uppercase text-neutral-500 h-screen w-screen">
+              Scroll up
+            </span>
+          </div>
+       </div>
     );
 }
