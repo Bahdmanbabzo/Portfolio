@@ -16,10 +16,19 @@ export default function Card ({ card }) {
         ></div>
         <motion.div 
           initial={{clipPath: "circle(9.1% at 87% 14%)"}}
-          whileHover={{clipPath:"circle(70.6% at 50% 51%)",backdropFilter: "blur(10px)",  transition:{duration:0.5}}}
+          whileHover={{
+            clipPath:"circle(70.6% at 50% 51%)",
+            backdropFilter: "blur(10px)",  
+            transition:{ease: "easeInOut", mass:10}
+          }}
           id='card-overlay'
-          className="absolute z-30 text-white h-full w-full bg-white/30"
-        > lorem 50</motion.div>
+          className="absolute z-30 text-white h-full w-full bg-white/30  text-center text-lg flex items-center justify-center font-black"
+          style={{
+            color: card.hex,
+          }}
+        >
+          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, molestias omnis sed at amet ad voluptatum distinctio quas unde harum.</p>
+        </motion.div>
       </div>
     );
   };
