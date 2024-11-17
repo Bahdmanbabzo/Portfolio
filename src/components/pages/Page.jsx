@@ -11,10 +11,12 @@ export default function Page() {
     const opacity = useTransform(scrollY, [0, ref.current?.offsetHeight / 2 || 150], [1, 0]);
 
     return (
-        <div className="text-red-500 relative z-40 pt-14 px-6">
-          <div className="flex h-48 items-center justify-center">
-            
-          </div>
+        <div className="relative z-40 px-6">
+          <motion.div className="flex h-screen px-10 relative "  style={{opacity: opacity}}>
+            <p className="absolute left-0 top-3 font-light text-6xl text-white">LOREM IPSUM</p>
+            <p className="absolute left-1/2 top-1/2 text-white font-light text-6xl"> DOLOR</p>
+            <p className="absolute bottom-2 right-4 text-white font-light text-6xl"> SIT AMET</p>  
+          </motion.div>
           <HorizontalScroll />
           <div className="flex h-48 items-center justify-center">
             <span className="font-semibold uppercase text-neutral-500 h-screen w-screen">
