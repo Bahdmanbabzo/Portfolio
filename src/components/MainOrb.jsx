@@ -1,29 +1,19 @@
-import {
-    Sphere, 
-    useTexture,
-    useCubeTexture, 
-    MeshDistortMaterial, 
-} from '@react-three/drei';
 import * as THREE from 'three'; 
 import { useFrame } from '@react-three/fiber';
 import { useRef } from 'react'; 
 import { motion } from 'framer-motion'
-
+import { damp3 } from 'maath/easing'
 export default function MainOrb({material}){
     const ref= useRef(); 
-    useFrame(({clock, mouse}) => {
+    useFrame(({clock, mouse, delta}) => {
         ref.current.rotation.z = clock.getElapsedTime(); 
-        ref.current.rotation.y = THREE.MathUtils.lerp(
-            ref.current.rotation.y, 
-            mouse.x * Math.PI, 
-            0.1
-        ); 
-        ref.current.rotation.x = THREE.MathUtils.lerp(
-            ref.current.rotation.x, 
-            mouse.y * Math.PI,
-            0.1
-        )
-
+        damp3(
+            ref.current.rotation,
+            [mouse.y * Math.PI, mouse.x * Math.PI, ref.current.rotation.z],
+            0.1,
+            delta
+        );
+        
     })
     return (
         <motion.mesh 

@@ -5,7 +5,7 @@ function App() {
   return (
    <div className="bg-teal-200 relative ">
     {/* <Loader /> */}
-    <Page />
+    {/* <Page /> */}
     <World />
    </div>
   )
