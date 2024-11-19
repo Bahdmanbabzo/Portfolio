@@ -19,7 +19,13 @@ export default function Page() {
     // If ref is not mounted, use a default height of 150
     const opacity = useTransform(scrollY, [0, ref.current?.offsetHeight / 2 || 150], [1, 0]);
 
-   
+    useEffect(() => {
+      if (isInView) {
+        animate("p", {y:"0%"}, {delay: stagger(0.3), ease:"easeIn", type:"spring", stiffness:50})
+      }else { 
+        animate("p", {y:"100%"}, {delay: stagger(0.3, {from: "last"}), ease:"easeOut"})
+      }
+    }, [isInView])
 
     return (
         <div className="relative z-40 px-6">
