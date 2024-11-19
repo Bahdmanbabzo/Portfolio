@@ -43,7 +43,7 @@ export default function HorizontalScroll () {
     const x = useTransform(scrollYProgress, [0, 1], ["1%", "-100%"]);
   
     return (
-      <section ref={targetRef} className="relative h-[300vh] bg-transparent">
+      <section ref={targetRef} className="relative h-[300vh]">
         <div className="sticky top-0 flex h-screen items-center overflow-hidden">
           <motion.div style={{ x }} className="flex gap-4">
             {cards.map((card) => {
