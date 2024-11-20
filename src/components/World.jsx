@@ -9,8 +9,8 @@ const CameraController = ({ scrollY }) => {
     const cameraRef = useRef();
 
     // Map scroll position to camera position
-    const cameraZ = useTransform(scrollY, [0,1000], [6,2]);
-    const cameraX = useTransform(scrollY, [0,1000], [0,2]);
+    const cameraZ = useTransform(scrollY, [0,1000], [5,2]);
+    const cameraX = useTransform(scrollY, [0,1000], [0,-1]);
 
     useFrame(() => {
         if (cameraRef.current) {
