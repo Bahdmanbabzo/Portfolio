@@ -9,11 +9,13 @@ const CameraController = ({ scrollY }) => {
     const cameraRef = useRef();
 
     // Map scroll position to camera position
-    const cameraZ = useTransform(scrollY, [0,1000], [3,10]);
+    const cameraZ = useTransform(scrollY, [0,1000], [6,2]);
+    const cameraX = useTransform(scrollY, [0,1000], [0,2]);
 
     useFrame(() => {
         if (cameraRef.current) {
             cameraRef.current.position.z = cameraZ.get();
+            cameraRef.current.position.x = cameraX.get();
         }
     });
 
@@ -40,7 +42,7 @@ const World = () => {
             >
                 <Suspense fallback={<Html>Loading...</Html>}>
                     <CameraController scrollY={scrollY} />
-                    <OrbitControls />
+                    {/* <OrbitControls /> */}
                     {/* <Portal /> */}
                     <OrbsScene />
                 </Suspense>
