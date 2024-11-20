@@ -28,7 +28,7 @@ export default function Page() {
     }, [isInView])
 
     return (
-        <div className="relative z-40 px-6">
+        <div className="relative z-40 px-6 pointer-events-none">
           <motion.div className="flex h-screen px-10 relative "  style={{opacity: opacity}}>
             <p className="absolute left-0 top-3 font-light text-6xl text-white">LOREM IPSUM</p>
             <p className="absolute left-1/2 top-1/2 text-white font-light text-6xl"> DOLOR</p>
