@@ -4,7 +4,7 @@ export default function Card ({ card }) {
     return (
       <div
         key={card.id}
-        className="group relative h-[450px] w-[450px] overflow-hidden bg-neutral-200 rounded-xl"
+        className="group relative h-[450px] w-[450px] overflow-hidden bg-neutral-200 rounded-xl font-Epilogue"
       > 
         <div
           style={{

@@ -8,7 +8,7 @@ export default function HorizontalScroll () {
           url: "/Lapland,-Finland.jpg",
           title: "Title 1",
           id: 1,
-          hex:"#8ECAE6"
+          hex:"#003566"
         },
         {
           url: "/Las-Medulas,-Spain.jpg",
@@ -26,13 +26,13 @@ export default function HorizontalScroll () {
           url: "/Swiss-Alps-Switzerland.jpg",
           title: "Title 4",
           id: 4,
-          hex:"#A2D2FF"
+          hex:"#003566"
         },
         {
           url: "/Vatnajokull-Iceland.jpg",
           title: "Title 5",
           id: 5,
-          hex:"#D90429"
+          hex:"#606C38"
         }
       ];
     const targetRef = useRef(null);
