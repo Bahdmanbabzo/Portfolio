@@ -13,13 +13,19 @@ export default function Page() {
     const { scrollY } = useScroll();
     const ref = useRef();
     const [scope, animate] = useAnimate(); 
+    const [heroScope, heroAnimate] = useAnimate();
     const isInView = useInView(scope, {amount:0.3})
 
     // Calculate the opacity based on the scroll position
     // If ref is not mounted, use a default height of 150
     const opacity = useTransform(scrollY, [0, ref.current?.offsetHeight / 2 || 150], [1, 0]);
-
+    const sequence = [
+      ['#main', {opacity:[0,1]}], 
+      ['#main', {x:[0,-15]}, {at: "+0.5"}],
+      ['.foo',{opacity:[0,1], x:[-15,-14]}, {duration: 0.5}]
+    ]
     useEffect(() => {
+      heroAnimate(sequence);
       if (isInView) {
         animate("p", {y:"0%"}, {delay: stagger(0.3), ease:"easeIn", type:"spring", stiffness:50})
       }else { 
@@ -36,11 +42,11 @@ export default function Page() {
               <li><a href="#section3">CLINICIAN</a></li>
             </ul>
           </nav>
-          <motion.div className="flex h-screen px-10 relative font-Epilogue"  style={{opacity: opacity}}>
-            <p className="absolute left-0 top-3 font-light text-6xl text-white">LOREM IPSUM</p>
-            <p className="absolute left-1/2 top-1/2 text-white font-light text-6xl"> DOLOR</p>
-            <p className="absolute bottom-2 right-4 text-white font-light text-6xl"> SIT AMET</p>  
-          </motion.div>
+          <div className="text-white h-screen relative font-Epilogue grid place-items-center">
+           <motion.div ref={heroScope} style={{opacity: opacity}}>
+            <span id="main" className="text-6xl font-bold font-Ewert inline-block">BECKLEY</span><span className="text-sm foo inline-block">.PORTFOLIO</span>
+           </motion.div>
+          </div>
           <HorizontalScroll />
           <div className=" text-white font-light text-6xl h-screen font-Epilogue" ref={scope}>
             <div className="overflow-hidden">
