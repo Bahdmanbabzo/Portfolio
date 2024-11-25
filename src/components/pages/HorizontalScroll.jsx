@@ -1,40 +1,9 @@
 import { useRef } from 'react';
 import { motion, useTransform, useScroll  } from 'framer-motion';
 import Card from './Cards';
+import { cards } from '../../helper';
 
 export default function HorizontalScroll () {
-    const cards = [
-        {
-          url: "/Lapland,-Finland.jpg",
-          title: "Title 1",
-          id: 1,
-          hex:"#003566"
-        },
-        {
-          url: "/Las-Medulas,-Spain.jpg",
-          title: "Title 2",
-          id: 2,
-          hex:"#606C38"
-        },
-        {
-          url: "/Lofoten-islands-Norway.jpg",
-          title: "Title 3",
-          id: 3,
-          hex:"#003566"
-        },
-        {
-          url: "/Swiss-Alps-Switzerland.jpg",
-          title: "Title 4",
-          id: 4,
-          hex:"#003566"
-        },
-        {
-          url: "/Vatnajokull-Iceland.jpg",
-          title: "Title 5",
-          id: 5,
-          hex:"#606C38"
-        }
-      ];
     const targetRef = useRef(null);
     const { scrollYProgress } = useScroll({
       target: targetRef,
