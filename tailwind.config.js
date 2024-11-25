@@ -9,6 +9,7 @@ export default {
       fontFamily: {
         'Bebas': ['Bebas Neue ', 'sans-serif'],
         'Epilogue': ['Epilogue', 'sans-serif'],
+        'Ewert': ['Ewert', 'sans-serif'],
       },
     },
   },
