@@ -1,11 +1,9 @@
-import Loader from "./components/Loader"
-import World from "./components/World"
-import Page from "./components/pages/Page"
+import World from "./components/3d/World"
+import MainPage from "./components/pages/Main"
 function App() {
   return (
    <div className="bg-teal-200 relative ">
-    {/* <Loader /> */}
-    <Page />
+    <MainPage />
     <World />
    </div>
   )

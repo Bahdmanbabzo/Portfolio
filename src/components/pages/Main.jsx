@@ -9,7 +9,7 @@ import {
 import { useEffect, useRef } from "react";
 import HorizontalScroll from "./HorizontalScroll";
 
-export default function Page() {
+export default function MainPage() {
     const { scrollY } = useScroll();
     const ref = useRef();
     const [scope, animate] = useAnimate(); 
