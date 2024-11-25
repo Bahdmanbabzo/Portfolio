@@ -14,7 +14,7 @@ export default function MainPage() {
     const ref = useRef();
     const [scope, animate] = useAnimate(); 
     const [heroScope, heroAnimate] = useAnimate();
-    const isInView = useInView(scope, {amount:0.3})
+    const isInView = useInView(scope, {amount:0.8})
 
     // Calculate the opacity based on the scroll position
     // If ref is not mounted, use a default height of 150
@@ -27,7 +27,7 @@ export default function MainPage() {
     useEffect(() => {
       heroAnimate(sequence);
       if (isInView) {
-        animate("p", {y:"0%"}, {delay: stagger(0.3), ease:"easeIn", type:"spring", stiffness:50})
+        animate("p", {y:"0%"}, {delay: stagger(0.4), ease:"easeIn", type:"spring", stiffness:50})
       }else { 
         animate("p", {y:"100%"}, {delay: stagger(0.3, {from: "last"}), ease:"easeOut"})
       }
@@ -35,7 +35,7 @@ export default function MainPage() {
 
     return (
         <div className="relative z-40 px-6 pointer-events-none">
-          <nav className="sticky top-0 z-50 bg-black text-white p-4 font-Bebas">
+          <nav className="sticky top-0 z-50 text-white p-4 font-Bebas bg-black">
             <ul className="flex justify-between">
               <li><a href="#section1"> BAHDMANBABZ0</a></li>
               <li><a href="#section2">CREATIVE DEVELOPER</a></li>
@@ -48,16 +48,20 @@ export default function MainPage() {
            </motion.div>
           </div>
           <HorizontalScroll />
-          <div className=" text-white font-light text-6xl h-screen font-Epilogue" ref={scope}>
-            <div className="overflow-hidden">
-              <motion.p initial={{y:"100%"}}>Lorem ipsum dolor</motion.p>
-            </div>
-            <div className=" overflow-hidden">
-              <motion.p initial={{y:"100%"}}>Lorem i dont understand</motion.p>
-            </div>
-            <div className=" overflow-hidden">
-              <motion.p initial={{y:"100%"}}>lorem is the name</motion.p>
-            </div>
+          <div className=" text-white font-light text-3xl h-screen font-Epilogue flex" ref={scope}>
+           <section className="w-1/2 border-r-2 border-white relative">
+            <div className="overflow-hidden absolute top-40 left-0">
+                <motion.p initial={{y:"100%"}}>my picture</motion.p>
+              </div>
+              <div className=" overflow-hidden absolute bottom-36 left-0">
+                <motion.p initial={{y:"100%"}}>my skills</motion.p>
+              </div>
+           </section>
+            <section className="w-1/2 flex items-center">
+              <div className=" overflow-hidden">
+                <motion.p initial={{y:"100%"}}>Brief about me</motion.p>
+              </div>
+            </section>
           </div>
        </div>
     );
