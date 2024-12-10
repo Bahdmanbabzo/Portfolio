@@ -4,6 +4,10 @@ My portfolio site still in the works.
 
 ## Demo
 
+
+https://github.com/user-attachments/assets/fb50ffdb-c28a-4dc0-8d2d-dafdf429346f
+
+
 ## Usage and Installation
 
 ### Prerequisites
