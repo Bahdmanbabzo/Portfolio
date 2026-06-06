@@ -1,9 +1,10 @@
 import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, Html, PerspectiveCamera } from '@react-three/drei';
-import { Suspense, useRef } from 'react';
+import { Html, PerspectiveCamera } from '@react-three/drei';
+import { Suspense, useRef, useState, useEffect } from 'react';
 import { useScroll, useTransform } from 'framer-motion';
-import Portal from './Portal';
 import OrbsScene from './OrbsScene';
+import DistortionImage from './DistortionImage';
+import { usePicture } from '../../context/PictureContext';
 
 const CameraController = ({ scrollY }) => {
     const cameraRef = useRef();
@@ -26,12 +27,28 @@ const CameraController = ({ scrollY }) => {
 
 const World = () => {
     const { scrollY } = useScroll();
+    const { activeImageUrl } = usePicture();
+    const [renderUrl, setRenderUrl] = useState(null)
+    const [isExiting, setIsExiting] = useState(false)
+
+    useEffect(() => {
+        if (activeImageUrl) {
+            setRenderUrl(activeImageUrl)
+            setIsExiting(false)
+        } else if (renderUrl) {
+            setIsExiting(true)
+        }
+    }, [activeImageUrl])
+
+    const handleExitComplete = () => {
+        setRenderUrl(null)
+        setIsExiting(false)
+    }
 
     return (
         <div className="h-screen w-screen fixed top-0">
             <Canvas
                 shadows
-                colorManagement
                 gl={{
                     powerPreference: "high-performance",
                     alpha: false,
@@ -42,9 +59,10 @@ const World = () => {
             >
                 <Suspense fallback={<Html>Loading...</Html>}>
                     <CameraController scrollY={scrollY} />
-                    {/* <OrbitControls /> */}
-                    {/* <Portal /> */}
                     <OrbsScene />
+                    {(renderUrl || isExiting) && (
+                        <DistortionImage imageUrl={renderUrl} exiting={isExiting} onExitComplete={handleExitComplete} />
+                    )}
                 </Suspense>
             </Canvas>
         </div>
