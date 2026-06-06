@@ -14,7 +14,7 @@ export default function HorizontalScroll () {
     return (
       <section ref={targetRef} className="relative h-[300vh] pointer-events-auto">
         <div className="sticky top-0 flex h-screen items-center overflow-hidden">
-          <motion.div style={{ x }} className="flex gap-4">
+          <motion.div style={{ x }} className="flex gap-2 md:gap-4">
             {cards.map((card) => {
               return <Card card={card} key={card.id}/>;
             })}

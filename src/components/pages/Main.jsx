@@ -68,37 +68,36 @@ export default function MainPage() {
     }, [isInView])
 
     return (
-        <div className="relative z-40 px-6 pointer-events-none">
-          <nav className="sticky top-0 z-50 text-white p-4 font-Bebas bg-black">
-            <ul className="flex justify-between">
-              <li><a href="#section1"> BAHDMANBABZ0</a></li>
+        <div className="relative z-40 px-4 md:px-6 pointer-events-none">
+          <nav className="sticky top-0 z-50 text-white p-2 md:p-4 font-Bebas bg-black">
+            <ul className="flex justify-between text-xs md:text-base">
+              <li><a href="#section1">BAHDMANBABZ0</a></li>
               <li><a href="#section2">CREATIVE DEVELOPER</a></li>
               <li><a href="#section3">CLINICIAN</a></li>
             </ul>
           </nav>
           <div className="text-white h-screen relative font-Epilogue grid place-items-center">
            <motion.div ref={heroScope} style={{opacity: opacity}}>
-            <span id="main" className="text-6xl font-bold font-Ewert inline-block">BECKLEY</span><span className="text-sm foo inline-block">.PORTFOLIO</span>
+             <span id="main" className="text-4xl md:text-6xl font-bold font-Ewert inline-block">BECKLEY</span><span className="text-xs md:text-sm foo inline-block">.PORTFOLIO</span>
            </motion.div>
           </div>
           <HorizontalScroll />
-          <div className=" text-white font-light text-3xl h-screen font-Epilogue flex" ref={scope}>
-            <section className="w-1/2 border-r-2 border-white relative">
-             <div className="overflow-hidden absolute top-40 left-0" ref={pictureRef}>
-                 <motion.p initial={{y:"100%"}}>my picture</motion.p>
+          <div className="text-white font-light h-auto min-h-screen md:h-screen font-Epilogue flex flex-col md:flex-row" ref={scope}>
+            <section className="w-full md:w-1/2 border-b-2 md:border-b-0 md:border-r-2 border-white relative min-h-[40vh] md:min-h-0">
+             <div className="overflow-hidden absolute top-20 md:top-40 left-4 md:left-0" ref={pictureRef}>
+                 <motion.p initial={{y:"100%"}}>
+                  <img src="/DSC_0218.jpg" alt="" />
+                 </motion.p>
                </div>
-              <div className=" overflow-hidden absolute bottom-36 left-0">
-                <motion.p initial={{y:"100%"}}>my skills</motion.p>
-              </div>
            </section>
-            <section className="w-1/2 flex items-center">
-              <div className="flex flex-col gap-4 p-6">
+            <section className="w-full md:w-1/2 flex items-center">
+              <div className="flex flex-col gap-4 p-4 md:p-6">
                 <div className="overflow-hidden">
                   <motion.p
                     initial={{ y: "100%" }}
                     animate={{ y: isInView ? "0%" : "100%" }}
                     transition={{ duration: 0.6, ease: "easeOut", delay: 0.8, type: "spring", stiffness: 50 }}
-                    className="text-3xl font-bold"
+                    className="text-2xl md:text-3xl font-bold font-Bebas"
                   >
                     about me
                   </motion.p>

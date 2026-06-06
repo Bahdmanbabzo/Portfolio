@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
+import OpenButton from "../OpenButton";
 
 export default function Card ({ card }) {
     const videoRef = useRef(null);
@@ -8,7 +9,7 @@ export default function Card ({ card }) {
     return (
       <div
         key={card.id}
-        className="group relative h-[450px] w-[450px] overflow-hidden bg-neutral-200 rounded-xl font-Epilogue"
+        className="group relative h-[60vw] w-[60vw] md:h-[450px] md:w-[450px] overflow-hidden bg-neutral-200 rounded-xl font-Epilogue"
         onMouseEnter={() => videoRef.current?.play()}
         onMouseLeave={() => {
           setIsOverlayOpen(false); // Close overlay when mouse leaves the card entirely
@@ -37,8 +38,8 @@ export default function Card ({ card }) {
           style={{
             left: '90%',
             transform: 'translate(-50%, -50%)',
-            width: '60px',
-            height: '60px',
+            width: '44px',
+            height: '44px',
           }}
           onMouseEnter={() => setIsOverlayOpen(true)}
           onClick={() => setIsOverlayOpen(true)} // Added for mobile tap support
@@ -70,7 +71,7 @@ export default function Card ({ card }) {
             transition: { ease: [0.25, 1, 0.5, 1], duration: 0.55 } // Snappier, professional easeOutQuart
           }
         }}
-        className="absolute inset-0 z-30 flex flex-col justify-end p-6 bg-zinc-950/60 border border-white/5 opacity-80 hover:opacity-100 transition-opacity duration-300"
+        className="absolute inset-0 z-30 flex flex-col justify-end p-4 md:p-6 bg-zinc-950/60 border border-white/5 opacity-80 hover:opacity-100 transition-opacity duration-300"
       >
         {/* The Text Content Group (Hidden smoothly when unhovered to avoid clipping artifacts) */}
         <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out text-left">
@@ -87,6 +88,13 @@ export default function Card ({ card }) {
           <p className="text-sm leading-relaxed text-zinc-300 font-normal antialiased max-w-sm">
             {card.description}
           </p>
+          <OpenButton
+            source={card.source}
+            className="mt-4 px-4 py-2 text-sm font-semibold rounded-lg transition-colors duration-300"
+            style={{ backgroundColor: card.hex, color: "#000" }}
+          >
+            VIEW PROJECT
+          </OpenButton>
         </div>
       </motion.div>
       </div>
