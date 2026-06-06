@@ -1,34 +1,94 @@
+import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 
 export default function Card ({ card }) {
+    const videoRef = useRef(null);
+    const [isOverlayOpen, setIsOverlayOpen] = useState(false);
+
     return (
       <div
         key={card.id}
         className="group relative h-[450px] w-[450px] overflow-hidden bg-neutral-200 rounded-xl font-Epilogue"
+        onMouseEnter={() => videoRef.current?.play()}
+        onMouseLeave={() => {
+          setIsOverlayOpen(false); // Close overlay when mouse leaves the card entirely
+          if (videoRef.current) {
+            videoRef.current.pause();
+            videoRef.current.currentTime = 0;
+          }
+        }}
       > 
-        <div
-          style={{
-            backgroundImage: `url(${card.url})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-          className="absolute inset-0 z-0 transition-transform duration-300 group-hover:scale-110"
-        ></div>
+        <video
+          ref={videoRef}
+          src={card.url}
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 z-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+        />
+
+        {/* Invisible Hitbox around the pulse dot that triggers the overlay */}
         <motion.div 
-          initial={{clipPath: "circle(9.1% at 87% 14%)"}}
-          whileHover={{
-            clipPath:"circle(70.6% at 50% 51%)",
-            backdropFilter: "blur(10px)",  
-            transition:{ease: "easeInOut", mass:10}
-          }}
-          id='card-overlay'
-          className="absolute z-30 text-white h-full w-full bg-white/30  text-center text-lg flex items-center justify-center font-black"
+          initial={{ top: '10%' }}
+          whileInView={{ top: '50%' }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+          className={`absolute z-20 flex items-center justify-center cursor-pointer transition-opacity duration-300 ${isOverlayOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
           style={{
-            color: card.hex,
+            left: '90%',
+            transform: 'translate(-50%, -50%)',
+            width: '60px',
+            height: '60px',
           }}
+          onMouseEnter={() => setIsOverlayOpen(true)}
+          onClick={() => setIsOverlayOpen(true)} // Added for mobile tap support
         >
-          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, molestias omnis sed at amet ad voluptatum distinctio quas unde harum.</p>
+          {/* Pulsing inner dot */}
+          <motion.div
+            animate={{ scale: [1, 1.6, 1], opacity: [0.6, 1, 0.6] }}
+            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+            className="w-[16px] h-[16px] rounded-full"
+            style={{ 
+               backgroundColor: card.hex, 
+               boxShadow: `0 0 16px 4px ${card.hex}` 
+            }}
+          />
         </motion.div>
+
+        <motion.div 
+        id='card-overlay'
+        initial="rest"
+        animate={isOverlayOpen ? "hover" : "rest"}
+        variants={{
+          rest: { 
+            clipPath: "circle(0% at 90% 50%)",
+            transition: { ease: [0.25, 1, 0.5, 1], duration: 0.55 }
+          },
+          hover: {
+            clipPath: "circle(100% at 50% 50%)",
+            backdropFilter: "blur(12px)",  
+            transition: { ease: [0.25, 1, 0.5, 1], duration: 0.55 } // Snappier, professional easeOutQuart
+          }
+        }}
+        className="absolute inset-0 z-30 flex flex-col justify-end p-6 bg-zinc-950/60 border border-white/5 opacity-80 hover:opacity-100 transition-opacity duration-300"
+      >
+        {/* The Text Content Group (Hidden smoothly when unhovered to avoid clipping artifacts) */}
+        <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out text-left">
+          <div 
+            className="w-12 h-1 rounded-full mb-3" 
+            style={{ backgroundColor: card.hex }} 
+          />
+          <h3 
+            className="text-xl font-bold tracking-tight mb-2 antialiased"
+            style={{ color: card.hex }}
+          >
+            {card.title}
+          </h3>
+          <p className="text-sm leading-relaxed text-zinc-300 font-normal antialiased max-w-sm">
+            {card.description}
+          </p>
+        </div>
+      </motion.div>
       </div>
     );
   };

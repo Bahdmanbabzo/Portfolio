@@ -1,32 +1,37 @@
 export const cards = [
     {
-      url: "/Arctic.png",
-      title: "Title 1",
+      url: "/render_engine.mp4",
+      title: "3d Render Engine",
       id: 1,
-      hex:"#003566"
+      hex:"#A855F7",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`"
     },
     {
-      url: "/Las-Medulas,-Spain.jpg",
-      title: "Title 2",
+      url: "/Terzo_Millennio2.mp4",
+      title: "Car Showcase Concept",
       id: 2,
-      hex:"#606C38"
+      hex:"#606C38",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     },
     {
-      url: "/augustus.png",
-      title: "Title 3",
+      url: "/immersive_cube.mp4",
+      title: "Portal Transition Effects",
       id: 3,
-      hex:"#003566"
+      hex:"#003566",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     },
     {
-      url: "/augustus3.png",
-      title: "Title 4",
+      url: "/maskeffect.mp4",
+      title: "Mask Transition Effects",
       id: 4,
-      hex:"#003566"
+      hex:"#D1B46A",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     },
     {
-      url: "/Vatnajokull-Iceland.jpg",
-      title: "Title 5",
+      url: "/vertex_manipulations.mp4",
+      title: "Vertex Manipulation Experiments",
       id: 5,
-      hex:"#606C38"
+      hex:"#5EEAD4",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     }
   ];
