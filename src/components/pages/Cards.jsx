@@ -9,7 +9,7 @@ export default function Card ({ card }) {
     return (
       <div
         key={card.id}
-        className="group relative w-[85vw] h-[70vw] md:h-[450px] md:w-[450px] overflow-hidden bg-neutral-200 rounded-xl font-Epilogue"
+        className="group relative w-[85vw] h-[70vh] md:h-[450px] md:w-[450px] shrink-0 snap-center overflow-hidden bg-neutral-200 rounded-xl font-Epilogue"
         onMouseEnter={() => videoRef.current?.play()}
         onMouseLeave={() => {
           setIsOverlayOpen(false); // Close overlay when mouse leaves the card entirely
