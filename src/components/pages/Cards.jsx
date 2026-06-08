@@ -9,7 +9,7 @@ export default function Card ({ card }) {
     return (
       <div
         key={card.id}
-        className="group relative h-[60vw] w-[60vw] md:h-[450px] md:w-[450px] overflow-hidden bg-neutral-200 rounded-xl font-Epilogue"
+        className="group relative w-[85vw] h-[70vw] md:h-[450px] md:w-[450px] overflow-hidden bg-neutral-200 rounded-xl font-Epilogue"
         onMouseEnter={() => videoRef.current?.play()}
         onMouseLeave={() => {
           setIsOverlayOpen(false); // Close overlay when mouse leaves the card entirely
@@ -36,10 +36,10 @@ export default function Card ({ card }) {
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
           className={`absolute z-20 flex items-center justify-center cursor-pointer transition-opacity duration-300 ${isOverlayOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
           style={{
-            left: '90%',
+            left: '85%',
             transform: 'translate(-50%, -50%)',
-            width: '44px',
-            height: '44px',
+            width: '48px',
+            height: '48px',
           }}
           onMouseEnter={() => setIsOverlayOpen(true)}
           onClick={() => setIsOverlayOpen(true)} // Added for mobile tap support
@@ -71,7 +71,7 @@ export default function Card ({ card }) {
             transition: { ease: [0.25, 1, 0.5, 1], duration: 0.55 } // Snappier, professional easeOutQuart
           }
         }}
-        className="absolute inset-0 z-30 flex flex-col justify-end p-4 md:p-6 bg-zinc-950/60 border border-white/5 opacity-80 hover:opacity-100 transition-opacity duration-300"
+        className="absolute inset-0 z-30 flex flex-col justify-end p-4 md:p-6 bg-zinc-950/80 md:bg-zinc-950/60 border border-white/5 opacity-80 hover:opacity-100 transition-opacity duration-300"
       >
         {/* The Text Content Group (Hidden smoothly when unhovered to avoid clipping artifacts) */}
         <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out text-left">
@@ -80,12 +80,12 @@ export default function Card ({ card }) {
             style={{ backgroundColor: card.hex }} 
           />
           <h3 
-            className="text-xl font-bold tracking-tight mb-2 antialiased"
+            className="text-xl md:text-2xl font-bold tracking-tight mb-2 antialiased"
             style={{ color: card.hex }}
           >
             {card.title}
           </h3>
-          <p className="text-sm leading-relaxed text-zinc-300 font-normal antialiased max-w-sm">
+          <p className="text-sm md:text-base leading-relaxed text-zinc-300 font-normal antialiased max-w-sm">
             {card.description}
           </p>
           <OpenButton

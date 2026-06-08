@@ -70,7 +70,7 @@ export default function MainPage() {
     return (
         <div className="relative z-40 px-4 md:px-6 pointer-events-none">
           <nav className="sticky top-0 z-50 text-white p-2 md:p-4 font-Bebas bg-black">
-            <ul className="flex justify-between text-xs md:text-base">
+              <ul className="flex justify-between text-sm md:text-base">
               <li><a href="#section1">BAHDMANBABZ0</a></li>
               <li><a href="#section2">CREATIVE DEVELOPER</a></li>
               <li><a href="#section3">CLINICIAN</a></li>
