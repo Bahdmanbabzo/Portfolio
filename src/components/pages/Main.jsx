@@ -141,12 +141,25 @@ export default function MainPage() {
             <HorizontalScroll />
           </div>
           <div id="about" className="text-white font-light h-auto min-h-screen md:h-screen font-Epilogue flex flex-col md:flex-row" ref={scope}>
-            <section className="w-full md:w-1/2 border-b-2 md:border-b-0 md:border-r-2 border-white relative min-h-[40vh] md:min-h-0">
-             <div className="overflow-hidden absolute top-20 md:top-40 left-4 md:left-0" ref={pictureRef}>
-                 <motion.p initial={{y:"100%"}}>
-                  <img src="/DSC_0218.jpg" alt="" />
-                 </motion.p>
+            <section className="w-full md:w-1/2 border-b-2 md:border-b-0 md:border-r-2 border-white relative min-h-[40vh] md:min-h-0 flex items-center justify-center">
+             <div ref={pictureRef}>
+               <div className="relative w-48 h-48 md:w-64 md:h-64">
+                 <motion.div
+                   className="absolute inset-0 rounded-full"
+                   style={{
+                     background: 'conic-gradient(from 0deg, transparent 60%, #6366f1, #a78bfa, #f472b6, transparent)',
+                     boxShadow: '0 0 30px rgba(99,102,241,0.4), 0 0 60px rgba(167,139,250,0.2)',
+                   }}
+                   animate={{ rotate: 360 }}
+                   transition={{ duration: 2.5, repeat: Infinity, ease: 'linear' }}
+                 />
+                 <div className="absolute inset-[3px] rounded-full overflow-hidden bg-black">
+                   <motion.p initial={{y:"100%"}} className="m-0">
+                     <img src="/IMG_1889.JPG" alt="" className="w-full h-full object-cover rounded-full" />
+                   </motion.p>
+                 </div>
                </div>
+             </div>
            </section>
             <section className="w-full md:w-1/2 flex items-center">
               <div className="flex flex-col gap-4 p-4 md:p-6">
