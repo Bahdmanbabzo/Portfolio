@@ -32,7 +32,7 @@ function TypewriterText({ text, speed = 10, start }) {
     return () => clearInterval(interval)
   }, [start, text, speed])
 
-  return <span>{displayed}</span>
+  return <span className="whitespace-pre-line">{displayed}</span>
 }
 
 export default function MainPage() {
@@ -160,8 +160,16 @@ export default function MainPage() {
                     about me
                   </motion.p>
                 </div>
-                <div className="text-sm font-light leading-relaxed text-zinc-200 max-w-lg">
-                  <TypewriterText start={typewriterStarted} text="I am a creative systems engineer, machine learning researcher, and medical student based in Lagos, passionate about crafting immersive 3D digital experiences that blend low-level graphics infrastructure with clinical neuroscience. Operating at the raw intersection of code, design, and biological data, I specialize in architecting client-side WebGPU/WebGL pipelines, immersive WebXR environments, and custom WGSL compute shaders. My work focuses on pushing the boundaries of what is possible within a browser tab—bypassing centralized cloud infrastructure to translate complex datasets and creative concepts into highly interactive, real-time 3D digital twins. From publishing independent research on arXiv and delivering oral technical presentations on an international stage to engineering experiential web applications, I am dedicated to building high-performance, visually striking, and universally accessible edge technology." />
+                <div className="text-sm font-light leading-relaxed text-zinc-200 max-w-lg flex flex-col gap-3">
+                  <TypewriterText start={typewriterStarted} text="I'm a creative systems engineer, ML researcher, and medical student based in Lagos, crafting immersive 3D experiences that blend graphics infrastructure with clinical neuroscience.I architect client-side WebGPU/WebGL pipelines, WebXR environments, and custom WGSL compute shaders—pushing boundaries within a browser tab.
+                  From publishing on arXiv and speaking internationally at conferences to building real-time 3D digital twins, I build high-performance edge technology." />
+                  <div className="flex flex-wrap gap-2 mt-2">
+                    {['WebGPU/WebGL', 'WebXR', 'WGSL', 'Three.js', 'React', 'Machine Learning'].map(skill => (
+                      <span key={skill} className="text-xs border border-white/20 px-2 py-0.5 rounded-full text-zinc-300">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </section>
