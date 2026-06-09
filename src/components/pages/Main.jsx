@@ -174,7 +174,8 @@ export default function MainPage() {
                   </motion.p>
                 </div>
                 <div className="text-sm font-light leading-relaxed text-zinc-200 max-w-lg flex flex-col gap-3">
-                  <TypewriterText start={typewriterStarted} text="I'm a creative systems engineer, ML researcher, and medical student based in Lagos, crafting immersive 3D experiences that blend graphics infrastructure with clinical neuroscience.I architect client-side WebGPU/WebGL pipelines, WebXR environments, and custom WGSL compute shaders—pushing boundaries within a browser tab.
+                  <TypewriterText start={typewriterStarted} text="I'm a creative systems engineer and ML researcher, crafting immersive 3D experiences that blend graphics infrastructure with clinical neuroscience. 
+                  I architect client-side WebGPU/WebGL pipelines, WebXR environments, and custom WGSL compute shaders—pushing boundaries within a browser tab.
                   From publishing on arXiv and speaking internationally at conferences to building real-time 3D digital twins, I build high-performance edge technology." />
                   <div className="flex flex-wrap gap-2 mt-2">
                     {['WebGPU/WebGL', 'WebXR', 'WGSL', 'Three.js', 'React', 'Machine Learning'].map(skill => (
