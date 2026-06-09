@@ -1,5 +1,6 @@
 import { 
   motion, 
+  AnimatePresence, 
   useScroll, 
   useTransform, 
   useInView, 
@@ -44,6 +45,14 @@ export default function MainPage() {
     const pictureRef = useRef(null)
     const isPictureInView = useInView(pictureRef, { amount: 0.5 })
     const [typewriterStarted, setTypewriterStarted] = useState(false)
+    const [showContact, setShowContact] = useState(false)
+    const [copied, setCopied] = useState(false)
+
+    const handleCopyEmail = () => {
+      navigator.clipboard.writeText('beckaustine@outlook.com')
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    }
 
     useEffect(() => {
       setActiveImageUrl(isPictureInView ? '/augustus3.png' : null)
@@ -69,20 +78,69 @@ export default function MainPage() {
 
     return (
         <div className="relative z-40 px-4 md:px-6 pointer-events-none">
-          <nav className="sticky top-0 z-50 text-white p-2 md:p-4 font-Bebas bg-black">
-              <ul className="flex justify-between text-sm md:text-base">
-              <li><a href="#section1">BAHDMANBABZ0</a></li>
-              <li><a href="#section2">CREATIVE DEVELOPER</a></li>
-              <li><a href="#section3">CLINICIAN</a></li>
-            </ul>
+          <nav className="sticky top-0 z-50 text-white p-2 md:p-4 font-Bebas bg-black pointer-events-auto">
+            <AnimatePresence mode="wait">
+              {showContact ? (
+                <motion.ul
+                  key="contact"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="flex justify-between text-sm md:text-base"
+                >
+                  <motion.li
+                    initial={{ opacity: 0, y: -8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0 }}
+                  >
+                    <button onClick={() => setShowContact(false)} className="hover:underline cursor-pointer">← BACK</button>
+                  </motion.li>
+                  <motion.li
+                    initial={{ opacity: 0, y: -8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 }}
+                  >
+                    <button onClick={handleCopyEmail} className="hover:underline cursor-pointer">{copied ? 'EMAIL COPIED' : 'EMAIL'}</button>
+                  </motion.li>
+                  <motion.li
+                    initial={{ opacity: 0, y: -8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                  >
+                    <a href="https://github.com/Bahdmanbabzo" target="_blank" rel="noopener noreferrer">GITHUB</a>
+                  </motion.li>
+                  <motion.li
+                    initial={{ opacity: 0, y: -8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 }}
+                  >
+                    <a href="https://www.linkedin.com/in/oserebameh-beckley/" target="_blank" rel="noopener noreferrer">LINKEDIN</a>
+                  </motion.li>
+                </motion.ul>
+              ) : (
+                <motion.ul
+                  key="main"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="flex justify-between text-sm md:text-base"
+                >
+                  <li><a href="#about" className="hover:underline">ABOUT</a></li>
+                  <li><a href="#works" className="hover:underline">WORKS</a></li>
+                  <li><button onClick={() => setShowContact(true)} className="hover:underline cursor-pointer">CONTACT</button></li>
+                </motion.ul>
+              )}
+            </AnimatePresence>
           </nav>
           <div className="text-white h-screen relative font-Epilogue grid place-items-center">
            <motion.div ref={heroScope} style={{opacity: opacity}}>
              <span id="main" className="text-4xl md:text-6xl font-bold font-Ewert inline-block">BECKLEY</span><span className="text-xs md:text-sm foo inline-block">.PORTFOLIO</span>
            </motion.div>
           </div>
-          <HorizontalScroll />
-          <div className="text-white font-light h-auto min-h-screen md:h-screen font-Epilogue flex flex-col md:flex-row" ref={scope}>
+          <div id="works">
+            <HorizontalScroll />
+          </div>
+          <div id="about" className="text-white font-light h-auto min-h-screen md:h-screen font-Epilogue flex flex-col md:flex-row" ref={scope}>
             <section className="w-full md:w-1/2 border-b-2 md:border-b-0 md:border-r-2 border-white relative min-h-[40vh] md:min-h-0">
              <div className="overflow-hidden absolute top-20 md:top-40 left-4 md:left-0" ref={pictureRef}>
                  <motion.p initial={{y:"100%"}}>
